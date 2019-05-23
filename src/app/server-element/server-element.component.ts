@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, OnChanges, SimpleChanges, DoCheck } from '@angular/core';
+import { Component, OnInit, Input, OnChanges, SimpleChanges, DoCheck, AfterContentInit, ContentChild, ElementRef } from '@angular/core';
 
 @Component({
   selector: 'app-server-element',
@@ -6,9 +6,11 @@ import { Component, OnInit, Input, OnChanges, SimpleChanges, DoCheck } from '@an
   styleUrls: ['./server-element.component.css']
 })
 
-export class ServerElementComponent implements OnInit, OnChanges, DoCheck {
+export class ServerElementComponent implements OnInit, OnChanges, DoCheck, AfterContentInit {
   @Input('srvElement') element: {name: string, content: string, type: string};
   @Input('srvElementName') name: string;
+
+  @ContentChild('paragraphContent') paragraph: ElementRef;
 
   constructor() {
     console.log('ServerElementComponent constructor called');
@@ -21,9 +23,16 @@ export class ServerElementComponent implements OnInit, OnChanges, DoCheck {
 
   ngOnInit() {
     console.log('inside ServerElementComponent ngOnInit');
+    console.log('ServerElement inner-content paragraph: ' + this.paragraph.nativeElement.textContent);
   }
 
   ngDoCheck() {
     console.log('inside ServerElementComponent ngDoCheck');
   }
+
+  ngAfterContentInit() {
+    console.log('inside ServerElementComponent ngAfterContentInit');
+    console.log('ServerElement inner-content paragraph: ' + this.paragraph.nativeElement.textContent);
+  }
+
 }

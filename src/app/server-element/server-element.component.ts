@@ -6,7 +6,7 @@ import { Component, OnInit, Input, OnChanges, SimpleChanges, DoCheck, AfterConte
   styleUrls: ['./server-element.component.css']
 })
 
-export class ServerElementComponent implements OnInit, OnChanges, DoCheck, AfterContentInit, AfterContentChecked, AfterViewInit {
+export class ServerElementComponent implements OnInit, OnChanges, DoCheck, AfterContentInit, AfterContentChecked, AfterViewInit, AfterViewChecked {
   @Input('srvElement') element: {name: string, content: string, type: string};
   @Input('srvElementName') name: string;
 
@@ -45,5 +45,9 @@ export class ServerElementComponent implements OnInit, OnChanges, DoCheck, After
   ngAfterViewInit() {
     console.log('inside ServerElementComponent ngAfterViewInit');
     console.log('ServerElement header: ' + this.header.nativeElement.textContent);
+  }
+
+  ngAfterViewChecked() {
+    console.log('inside ServerElementComponent ngAfterViewChecked');
   }
 }

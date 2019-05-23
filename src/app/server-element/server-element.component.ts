@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, OnChanges, SimpleChanges, DoCheck, AfterContentInit, ContentChild, ElementRef, AfterContentChecked, AfterViewInit, ViewChild } from '@angular/core';
+import { Component, OnInit, Input, OnChanges, SimpleChanges, DoCheck, AfterContentInit, ContentChild, ElementRef, AfterContentChecked, AfterViewInit, ViewChild, AfterViewChecked, OnDestroy  } from '@angular/core';
 
 @Component({
   selector: 'app-server-element',
@@ -6,7 +6,7 @@ import { Component, OnInit, Input, OnChanges, SimpleChanges, DoCheck, AfterConte
   styleUrls: ['./server-element.component.css']
 })
 
-export class ServerElementComponent implements OnInit, OnChanges, DoCheck, AfterContentInit, AfterContentChecked, AfterViewInit, AfterViewChecked {
+export class ServerElementComponent implements OnInit, OnChanges, DoCheck, AfterContentInit, AfterContentChecked, AfterViewInit, AfterViewChecked, OnDestroy {
   @Input('srvElement') element: {name: string, content: string, type: string};
   @Input('srvElementName') name: string;
 
@@ -49,5 +49,9 @@ export class ServerElementComponent implements OnInit, OnChanges, DoCheck, After
 
   ngAfterViewChecked() {
     console.log('inside ServerElementComponent ngAfterViewChecked');
+  }
+
+  ngOnDestroy() {
+    console.log('inside ServerElementComponent ngOnDestroy');
   }
 }

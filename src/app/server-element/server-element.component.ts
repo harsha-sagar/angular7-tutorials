@@ -13,6 +13,7 @@ export class ServerElementComponent implements OnInit {
   }
 
   ngOnInit() {
+    console.log('ServerElementComponent ngOnInit called');
   }
 
 }

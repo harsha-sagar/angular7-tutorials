@@ -21,6 +21,5 @@ export class ServerComponent implements OnInit {
   }
 
   onReload() {
-    this.router.navigate(['servers'], { relativeTo: this.route });
   }
 }

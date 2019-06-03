@@ -25,6 +25,7 @@ export class ServerComponent implements OnInit {
     );
   }
 
-  onReload() {
+  onEdit() {
+    this.router.navigate(['edit'], {relativeTo: this.route});
   }
 }

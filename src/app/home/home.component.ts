@@ -29,8 +29,11 @@ export class HomeComponent implements OnInit, OnDestroy {
         observer.next('second package')
       }, 4000);
       setTimeout(() => {
-        observer.error('this doesn\'t work')
+        observer.complete();
       }, 5000);
+      setTimeout(() => {
+        observer.next('last package')
+      }, 6000);
     });
     myObservable.subscribe(
       (data: string) => {
@@ -38,6 +41,9 @@ export class HomeComponent implements OnInit, OnDestroy {
       },
       (error: string) => {
         console.log(error);
+      },
+      () => {
+        console.log('completed');
       }
     )
   }

@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { Observable, Subscription } from 'rxjs';
+import { Observable, Subscription, Observer } from 'rxjs';
 import 'rxjs/Rx';
 
 @Component({
@@ -20,6 +20,26 @@ export class HomeComponent implements OnInit, OnDestroy {
         console.log(number);
       }
     );
+
+    const myObservable = Observable.create((observer: Observer<string>) => {
+      setTimeout(() => {
+        observer.next('first package')
+      }, 2000);
+      setTimeout(() => {
+        observer.next('second package')
+      }, 4000);
+      setTimeout(() => {
+        observer.error('this doesn\'t work')
+      }, 5000);
+    });
+    myObservable.subscribe(
+      (data: string) => {
+        console.log(data);
+      },
+      (error: string) => {
+        console.log(error);
+      }
+    )
   }
 
   ngOnDestroy() {

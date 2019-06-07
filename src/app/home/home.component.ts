@@ -10,6 +10,7 @@ import 'rxjs/Rx';
 
 export class HomeComponent implements OnInit, OnDestroy {
   myNumbersSubscription: Subscription;
+  myObservableSubscription: Subscription;
 
   constructor() { }
 
@@ -35,7 +36,7 @@ export class HomeComponent implements OnInit, OnDestroy {
         observer.next('last package')
       }, 6000);
     });
-    myObservable.subscribe(
+    this.myObservableSubscription = myObservable.subscribe(
       (data: string) => {
         console.log(data);
       },
@@ -50,5 +51,6 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.myNumbersSubscription.unsubscribe();
+    this.myObservableSubscription.unsubscribe();
   }
 }

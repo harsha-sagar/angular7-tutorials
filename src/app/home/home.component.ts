@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Observable, Subscription } from 'rxjs';
 import 'rxjs/Rx';
 
 @Component({
@@ -8,15 +8,21 @@ import 'rxjs/Rx';
   styleUrls: ['./home.component.css']
 })
 
-export class HomeComponent implements OnInit {
+export class HomeComponent implements OnInit, OnDestroy {
+  myNumbersSubscription: Subscription;
+
   constructor() { }
 
   ngOnInit() {
     const myNumbers = Observable.interval(1000);
-    myNumbers.subscribe(
+    this.myNumbersSubscription = myNumbers.subscribe(
       (number: number) => {
         console.log(number);
       }
     );
+  }
+
+  ngOnDestroy() {
+    this.myNumbersSubscription.unsubscribe();
   }
 }

@@ -14,14 +14,10 @@ export class AppComponent {
   genders = [ 'Male', 'Female' ];
 
   suggestUserName() {
-    this.signupForm.setValue({
+    this.signupForm.form.patchValue({
       userData: {
         username: 'Superuser',
-        email: ''
-      },
-      secret: 'pet',
-      questionAnswer: '',
-      gender: this.genders[0]
+      }
     });
   }
 

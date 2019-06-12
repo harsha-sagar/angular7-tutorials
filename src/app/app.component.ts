@@ -24,4 +24,8 @@ export class AppComponent {
   onSubmit(){
     console.log(this.signupForm);
   }
+
+  onReset() {
+    this.signupForm.reset();
+  }
 }

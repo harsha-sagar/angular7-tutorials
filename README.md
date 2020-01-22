@@ -1,3 +1,3 @@
 ### Summary -  
-Covers basics to start with Angular7  
-Different branches corresponds to play around with different features of Angular7
+- Playing around concepts of Angular version-7.
+- Different branches corresponds to different concepts learnt & concerned examples.
